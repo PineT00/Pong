@@ -3,6 +3,7 @@
 
 class Bat;
 class Ball;
+class UiScore;
 
 
 class ScenePong :
@@ -11,6 +12,7 @@ class ScenePong :
 protected:
 	Bat* bat = nullptr;
 	Ball* ball = nullptr;
+	UiScore* score = nullptr;
 
 public:
 	ScenePong(SceneIds id);

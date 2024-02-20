@@ -28,6 +28,7 @@ void Ball::Reset()
 
 void Ball::Fire(sf::Vector2f d, float s)
 {
+    isDead = false;
     isBallActive = true;
     direction = d;
     speed = s; 
@@ -35,10 +36,8 @@ void Ball::Fire(sf::Vector2f d, float s)
 
 void Ball::Update(float dt)
 {
-    if (InputMgr::GetKeyDown(sf::Keyboard::Space))
-    {
-        Fire({ -1.f, -1.f }, 500.f);
-    }
+    isBoundBat = false;
+
 
 
     const sf::FloatRect& prevBallBounds = shape.getGlobalBounds();
@@ -61,7 +60,6 @@ void Ball::Update(float dt)
     if (ballBottom > windowBottom)
     {
         isDead = true;
-        direction.y *= -1.f;
     }
     else if (ballTop < windowTop && direction.y < 0.f)
     {
@@ -74,6 +72,11 @@ void Ball::Update(float dt)
     else if (ballRight > windowRight && direction.x > 0.f)
     {
         direction.x *= -1.f;
+    }
+
+    if (isDead)
+    {
+        isBallActive = false;
     }
 
     const sf::FloatRect& batBounds = bat.shape.getGlobalBounds();
@@ -95,6 +98,7 @@ void Ball::Update(float dt)
         isBoundBat = true;
 
     }
+
 
 }
 

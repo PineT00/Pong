@@ -8,6 +8,9 @@ void Framework::Init(int width, int height, const std::string& name)
     windowSize.x = width;
     windowSize.y = height;
 
+    ResourceMgr<sf::Font>& fontResMgr = ResourceMgr<sf::Font>::Instance();
+    fontResMgr.Load("fonts/DS-DIGI.ttf");
+
     window.create(sf::VideoMode(windowSize.x, windowSize.y), name);
 
     InputMgr::Init();
