@@ -7,16 +7,19 @@ class Ball :
     public GameObject
 {
 protected:
+
+
+public:
     sf::Vector2f direction = { 0.f, 0.f };
     float speed = 0.f;
-    sf::FloatRect windowBounds;
+    sf::FloatRect windowBounds = { {0.f, 0.f}, {1920.f, 1080.f} };
     sf::CircleShape shape;
 
     bool isDead = false;
     bool isBound = false;
     bool isBoundBat = false;
 
-public:
+    bool isBallActive = false;
 
     Ball(const std::string& name = "");
     virtual ~Ball() = default;

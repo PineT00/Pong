@@ -4,10 +4,11 @@ class Bat :
     public GameObject
 {
 protected:
-    float speed = 600.f;
-    sf::RectangleShape shape;
+
 
 public:
+    float speed = 600.f;
+    sf::RectangleShape shape;
     Bat(const std::string& name = "");
     ~Bat() override = default;
 

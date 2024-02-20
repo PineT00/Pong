@@ -44,8 +44,10 @@ void ScenePong::Exit()
 void ScenePong::Update(float dt)
 {
     Scene::Update(dt);
-    //if (InputMgr::GetMouseButtonDown Left)
-    //{
 
-    //}
+    if (!(ball->isBallActive))
+    {
+        sf::Vector2f batPos = bat->shape.getPosition();
+        ball->shape.setPosition(batPos);
+    }
 }
