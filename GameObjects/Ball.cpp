@@ -2,8 +2,9 @@
 #include "Ball.h"
 #include "Bat.h"
 
-Ball::Ball(const std::string& name)
-    :GameObject(name)
+
+Ball::Ball(Bat& b, const sf::FloatRect& bounds, const std::string name)
+    : bat(b), windowBounds(bounds), GameObject(name)
 {
 }
 
@@ -74,6 +75,27 @@ void Ball::Update(float dt)
     {
         direction.x *= -1.f;
     }
+
+    const sf::FloatRect& batBounds = bat.shape.getGlobalBounds();
+    if (!prevBallBounds.intersects(batBounds) && ballBounds.intersects(batBounds))
+    {
+        float batLeft = batBounds.left;
+        float batRight = batBounds.left + batBounds.width;
+        float batTop = batBounds.top;
+        float batBottom = batBounds.top + batBounds.height;
+
+        if (ballBottom > batTop || ballTop < batBottom)
+        {
+            direction.y *= -1.f;
+        }
+        if (ballLeft > batRight || ballRight < batLeft)
+        {
+            direction.x *= -1.f;
+        }
+        isBoundBat = true;
+
+    }
+
 }
 
 void Ball::Draw(sf::RenderWindow& window)

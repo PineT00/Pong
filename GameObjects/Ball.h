@@ -21,7 +21,8 @@ public:
 
     bool isBallActive = false;
 
-    Ball(const std::string& name = "");
+    Ball(Bat& b, const sf::FloatRect& bounds, const std::string name);
+    Bat& bat;
     virtual ~Ball() = default;
     void Init() override;
     void Release() override;

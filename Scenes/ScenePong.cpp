@@ -16,7 +16,7 @@ void ScenePong::Init()
     //Scene::Init();
     bat = new Bat("bat");
     AddGo(bat);
-    ball = new Ball("Ball");
+    ball = new Ball(*bat, { { 0.f, 0.f }, { 1920.f, 1080.f } }, "ball");
     AddGo(ball);
     
 
