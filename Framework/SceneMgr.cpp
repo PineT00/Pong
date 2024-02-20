@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "SceneMgr.h"
+#include "ScenePong.h"
 #include "SceneDev1.h"
 #include "SceneDev2.h"
 
@@ -12,6 +13,7 @@ void SceneMgr::Init()
 {
 	Release();
 
+	scenes.push_back(new ScenePong(SceneIds::ScenePong));
 	scenes.push_back(new SceneDev1(SceneIds::SceneDev1));
 	scenes.push_back(new SceneDev2(SceneIds::SceneDev2));
 
